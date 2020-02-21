@@ -1,0 +1,673 @@
+@import "../fonts/fonts.css"
+$dark: #222
+$purple: #764BA2
+$lpurple: #8F75D7
+$tr: transparent
+$gr: #686868
+$dgr: #73738D
+
+@mixin ct
+	background-position: 50% 50%
+	background-size: contain
+	background-repeat: no-repeat
+@mixin cv
+	background-position: 50% 50%
+	background-size: cover
+	background-repeat: no-repeat
+@mixin ovl
+	content: ''
+	position: absolute
+	width: 100%
+	height: 100%
+	left: 0
+	top: 0
+@mixin ease
+	transition: .4s all ease
+@mixin easeinout
+	transition: .4s all ease-in-out
+@mixin r($width)
+	@media only screen and (max-width: $width + "px")
+		@content
+@mixin rmin($width)
+  @media only screen and (min-width: $width + "px")
+    @content
+
+@keyframes grd
+  0%
+    background-position: 0 50%
+  50%
+    background-position: 70% 50%
+  100%
+    background-position: 0 50%
+
+body
+	scroll-behavior: smooth
+	background-color: #fff
+	font-family: 'Open Sans', sans-serif
+	font-weight: 300
+	color: $dark
+	font-size: 14px
+	line-height: 1.4
+	position: relative
+	font-smoothing: antialiased
+	+r(1200)
+		font-size: 13px
+h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, p::selection, a::selection, span::selection, div::selection, img::selection, mark::selection, ul::selection, li::selection
+	color: #fff
+	background-color: $dark
+::selection
+	color: #fff
+	background-color: $dark
+a, a:hover, a:active, a:focus,
+button, input, button:hover, button:active, button:focus,
+input:focus, input:active, .btn, .btn:after, select:focus, select:active
+	text-decoration: none
+	outline: none
+	+easeinout
+	cursor: pointer
+a
+	color: $dark
+	&:hover
+		color: $lpurple
+button
+	border: transparent
+	background: none
+option
+	color: $dark
+textarea
+	resize: none
+	overflow: hidden
+	&::placeholder
+		color: $dark
+input,
+textarea,
+select
+	color: $dark
+	font-size: 16px
+	padding: 15px 30px
+	border-radius: 30px
+	background-color: #F8F8F8
+	border: none
+	+easeinout
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="tel"]::placeholder
+	color: #686868
+input:focus,
+textarea:focus,
+input:active,
+textarea:active
+	color: $dark
+	box-shadow: inset 0 0 1px $lpurple
+	outline: none
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+	-webkit-appearance: none
+input[type="number"]
+	-moz-appearance: textfield
+	appearance: textfield
+.form
+	&-group
+		position: relative
+		input
+			width: 100%
+		&__icon
+			fill: #686868
+			position: absolute
+			left: 22px
+			top: 50%
+			transform: translateY(-50%)
+	&__checkbox
+		position: relative
+		display: flex
+		align-items: flex-start
+		cursor: pointer
+		margin-top: 25px
+		&-input
+			position: absolute
+			opacity: 0
+			z-index: -1
+			&:checked ~ .form__checkbox-gal svg
+				opacity: 1
+				transform: scale(1)
+		&-gal
+			background: $tr
+			border: 1.5px solid $purple
+			border-radius: 4px
+			display: flex
+			justify-content: center
+			align-items: center
+			width: 20px
+			min-width: 20px
+			height: 20px
+			margin-right: 10px
+			svg
+				opacity: 0
+				transform: scale(.5)
+				+easeinout
+
+		&-text
+			font-size: 14px
+.tal
+	text-align: left !important
+.und
+	text-decoration: underline
+.upp
+	text-transform: uppercase
+.btn
+	font-size: 13px
+	font-weight: 600
+	text-align: center
+	padding: 15px 35px
+	color: #fff
+	background-color: $purple
+	border: 1px solid $purple
+	border-radius: 33px
+	outline: none
+	display: inline-block
+	min-width: 192px
+	+easeinout
+	+r(1200)
+		padding: 10px 15px
+		min-width: 170px
+	&:hover
+		color: $purple
+		background-color: $tr
+	&--tr
+		color: $purple
+		background-color: $tr
+		&:hover
+			color: #fff
+			background-color: $purple
+.list
+	&_circle
+		list-style-type: none
+		padding-left: 0
+		li
+			padding-left: 25px
+			position: relative
+			&
+				margin-bottom: 10px
+			&::before
+				content: ''
+				position: absolute
+				width: 8px
+				height: 8px
+				background-color: #EE414F
+				left: 0
+				top: 8px
+				border-radius: 50%
+	&_string
+		list-style-type: none
+		padding-left: 0
+		li
+			padding-left: 25px
+			position: relative
+			&
+				margin-bottom: 10px
+			&::before
+				content: ''
+				position: absolute
+				width: 12px
+				height: 1px
+				background-color: $dark
+				left: 0
+				top: 9px
+	&_num
+		padding-left: 0
+		counter-reset: list1
+		li
+			list-style-type: none
+			&
+				margin-bottom: 10px
+			&::before
+				counter-increment: list1
+				content: counter(list1)
+				color: $purple
+				font-size: 16px
+				font-weight: 600
+				margin-right: 15px
+.section
+	&_inner
+		padding: 60px 0
+		+r(1200)
+			padding: 40px 0
+	&__title
+		font-size: 40px
+		font-weight: 700
+		line-height: 1.1
+		text-align: center
+		letter-spacing: 1px
+		margin-bottom: 40px
+		+r(1200)
+			font-size: 28px
+			margin-bottom: 25px
+	&__subtitle
+		font-size: 38px
+		font-weight: 100
+		line-height: 1.2
+		letter-spacing: .5px
+		margin-bottom: 20px
+		+r(1200)
+			font-size: 24px
+.owl-carousel
+	.owl-item
+		img
+			width: auto !important
+	.owl-dots
+		position: absolute
+		width: 100%
+		display: flex
+		justify-content: center
+		bottom: -30px
+		button.owl-dot
+			width: 13px
+			height: 13px
+			border: 1.5px solid $dark
+			border-radius: 50%
+			background-color: transparent
+			position: relative
+			transform: scale(1)
+			&:not(:last-child)
+				margin-right: 10px
+			&.active
+				transform: scale(.8)
+				border-color: transparent
+				background-color: $purple
+	.owl-nav
+		button.owl-prev,
+		button.owl-next
+			width: 31px
+			height: 31px
+			position: absolute
+			bottom: 50%
+			margin-bottom: -25.5px
+			border-radius: 50%
+			padding: 0
+			background-color: $tr
+			border: 1.5px solid $dark
+			display: flex
+			justify-content: center
+			align-items: center
+			+ease
+			svg
+				max-width: 17px
+				max-height: 17px
+				height: auto
+				fill: none
+				stroke: $dark
+				+ease
+		button.owl-prev:hover,
+		button.owl-next:hover
+			background-color: $purple
+			border-color: $purple
+			svg
+				stroke: #fff
+		button.owl-prev.disabled,
+		button.owl-next.disabled,
+		button.owl-prev.disabled:hover,
+		button.owl-next.disabled:hover
+			opacity: 0
+			cursor: default
+		button.owl-prev
+			left: -60px
+		button.owl-next
+			right: -60px
+.preloader
+	display: inline-block
+	position: relative
+	transform: scale(0)
+	svg
+		fill: $purple
+		width: 300px
+		height: 90px
+	&__wrp
+		position: fixed
+		width: 100vw
+		height: 100vh
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		z-index: 4
+		background-color: #fff
+		display: flex
+		justify-content: center
+		align-items: center
+
+		display: none
+.content
+	position: relative
+	overflow: hidden
+	&__overlay
+		+ovl
+		background-color: $purple
+		opacity: 0
+		visibility: hidden
+		z-index: 2
+		+ease
+.header
+	padding: 20px 0
+	&__logo
+		&-title
+			font-size: 24px
+			font-weight: 600
+			letter-spacing: 4px
+			+easeinout
+			span
+				color: $purple
+			&:hover
+				letter-spacing: 9.4px
+		&-sub
+			font-size: 12px
+	&__nav
+		&-link
+			font-size: 12px
+			font-weight: 500
+			color: $dark
+			border-bottom: 1px solid $tr
+			margin-right: 25px
+			&:hover
+				color: $lpurple
+				border-bottom: 1px solid $lpurple
+.popup
+	position: fixed
+	top: 0
+	right: -100%
+	background-color: #fff
+	box-shadow: 0 20px 20px rgba(0, 0, 0, 0.08)
+	padding: 60px 30px
+	min-height: 100vh
+	z-index: 3
+	transition: all 1.5s cubic-bezier(.23,1,.32,1)
+	+r(1200)
+		right: -120%
+		width: 100%
+		min-height: 400px
+		height: 100vh
+		overflow-y: scroll
+		padding: 20px 15px
+	&__in
+		opacity: 0
+		transition: all 2.5s ease
+		+r(1200)
+			max-width: 370px
+			margin-left: auto
+			margin-right: auto
+	&__cross
+		margin-left: auto
+		display: block
+		+ease
+		&:hover
+			transform: rotate(-90deg)
+			opacity: .8
+		+r(575)
+			svg
+				width: 20px
+	&__form
+		max-width: 470px
+		&-descr
+			font-size: 15px
+			color: #686868
+.menu-open
+	height: 100%
+	width: 100%
+	.popup
+		right: 0
+		&__in
+			opacity: 1
+
+	.content
+		min-height: 100vh
+		&__overlay
+			opacity: .8
+			visibility: visible
+.banner
+	padding: 60px 0
+	&__title
+		font-size: 36px
+		font-weight: 700
+		line-height: 1.2
+		margin-bottom: 30px
+		span
+			color: $purple
+	&__descr
+		font-size: 16px
+		font-weight: 400
+		color: $dgr
+		margin-bottom: 20px
+	&__form
+		position: relative
+		box-shadow: 0 0 31.1875px rgba(54, 54, 54, 0.04), 0 2.77222px 27.7222px rgba(0, 0, 0, 0.04)
+		border-radius: 30px
+		width: 100%
+		max-width: 498px
+		overflow: hidden
+		&-tel
+			width: 100%
+			background-color: #fff
+			display: block
+		&-btn
+			position: absolute
+			right: 0
+			top: 0
+.views
+	&__item
+		text-align: center
+		background-color: #F5F5FB
+		border: 0.5px solid #EAEDF3
+		border-radius: 15px
+		box-shadow: 0 13px 75px rgba(242, 245, 250, 0.3)
+		padding: 30px 20px
+		height: 100%
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		+easeinout
+		&:hover
+			box-shadow: 0 13px 17px rgba(182, 183, 185, 0.21)
+			+rmin(1200)
+				.views__item
+					&-top
+						transform: translateY(0)
+					&-btn
+						opacity: 1
+						transform: translateY(0)
+		+rmin(1200)
+			&-top
+				transform: translateY(5px)
+				+easeinout
+		&-ttl
+			font-size: 18px
+			font-weight: 600
+			color: $purple
+			margin-bottom: 15px
+		&-descr
+			color: $dark
+			margin-bottom: 15px
+		&-btn
+			color: $purple
+			border-bottom: 1px solid $purple
+			padding: 0
+			&:hover
+				color: $lpurple
+				letter-spacing: 1px
+			+rmin(1200)
+				opacity: 0
+				transform: translateY(5px)
+				+easeinout
+.gallery
+	display: grid
+	grid-template-columns: repeat(7, 1fr)
+	grid-template-rows: minmax(260px, auto) repeat(2, minmax(130px, auto))
+	grid-gap: 20px
+	padding: 20px
+	&__item
+		position: relative
+		overflow: hidden
+		cursor: pointer
+		&::before
+			+ovl
+			background-color: $purple
+			opacity: 0
+			+easeinout
+			z-index: 1
+		&:hover
+			&::before
+				opacity: .5
+			.gallery__item
+				&-in
+					transform: scale(1.07)
+		&-in
+			width: 100%
+			height: 100%
+			+cv
+			+easeinout
+		&:nth-child(1)
+			grid-column: span 2
+		&:nth-child(3)
+			grid-column: span 3
+		&:nth-child(4)
+			grid-row: span 2
+		&:nth-child(5)
+			grid-row: span 2
+		&:nth-child(6)
+			grid-column: span 2
+			grid-row: span 2
+		&:nth-child(7)
+			grid-row: span 2
+		&:nth-child(8)
+			grid-row: span 2
+		&:nth-child(10)
+			grid-column: span 2
+.promo
+	position: relative
+	color: #fff
+	background: linear-gradient(90deg, #4E2A72 0%, $purple 100%)
+	background-size: 130% 100%
+	border-radius: 22px
+	padding: 30px
+	animation: grd 3s ease infinite
+	&::before
+		position: absolute
+		content: ''
+		right: 0
+		bottom: 0
+		width: 100%
+		height: 100%
+		background-image: url('../img/promo__decor.png')
+		+cv
+	&__in
+		position: relative
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+	&__title
+		font-size: 22px
+		font-weight: 700
+		margin-bottom: 10px
+	&__sub
+		font-weight: 500
+		margin-bottom: 10px
+	&__btn
+		background-color: #866E9F
+		border-color: #866E9F
+		align-self: flex-end
+		&:hover
+			color: #fff
+			background-color: $purple
+.reviews
+	max-width: 570px
+	margin-left: auto
+	margin-right: auto
+	&__item
+		background-color: #fff
+		box-shadow: 0 14px 55px #F2F5FA
+		border-radius: 8px
+		padding: 30px 35px
+		display: flex
+		flex-direction: column
+		align-items: center
+		text-align: center
+		+easeinout
+		margin-bottom: 30px
+		&:hover
+			box-shadow: 0 13px 17px rgba(182, 183, 185, 0.21)
+	&__img
+		width: 88px
+		height: 88px
+		border-radius: 50%
+		+cv
+		box-shadow: 0 4.5px 18px #F2F5FA, 0 4.5px 18px #F2F5FA, 0 4.5px 18px #F2F5FA
+		margin-top: -30px
+		margin-bottom: 20px
+	&__title
+		font-size: 16px
+		font-weight: 700
+		margin-bottom: 10px
+	&__decor
+		margin-bottom: 15px
+	&__text
+		color: $dark
+		min-height: 70px
+.feed
+	background-color: #fff
+	box-shadow: 0 14px 55px #F2F5FA
+	border-radius: 8px
+	padding: 30px
+	&__title
+		font-size: 22px
+		font-weight: 700
+		margin-bottom: 10px
+	&__left
+		&-sub
+			color: $dgr
+			margin-bottom: 6px
+			&:last-child
+				margin-bottom: 0
+	&__right
+		&-sub
+			margin-bottom: 8px
+.footer
+	padding: 50px 0
+	&__col
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+	&__title
+		font-size: 16px
+		font-weight: 700
+		margin-bottom: 15px
+	&__nav
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+	&__link
+		&:not(:last-child)
+			margin-bottom: 8px
+	&__soc
+		width: 40px
+		height: 40px
+		display: flex
+		justify-content: center
+		align-items: center
+		svg
+			fill: $lpurple
+			+easeinout
+		&:hover
+			svg
+				fill: $purple
+	&__bot
+		margin: 30px 0
+	&__logo
+		font-size: 30px
+		font-weight: 700
+		margin-top: 30px
+		margin-bottom: 10px
+		+easeinout
+		&:hover
+			color: $lpurple
+			letter-spacing: 3px
+	&__copy
+		color: $dark
