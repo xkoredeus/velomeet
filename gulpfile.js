@@ -32,7 +32,8 @@ gulp.task('scripts', function() {
 	return gulp.src([
 		'app/libs/jquery/jquery.min.js',
 		'app/libs/fancybox/jquery.fancybox.min.js',
-		'app/libs/owl.carousel/owl.carousel.min.js'
+		'app/libs/owl.carousel/owl.carousel.min.js',
+		'app/libs/masked.input/masked.input.min.js'
 	])
 		.pipe(concat('libs.min.js'))
 		.pipe(gulp.dest('app/js'));

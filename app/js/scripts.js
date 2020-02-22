@@ -20,6 +20,9 @@ $(() => {
         $('body,html').animate({scrollTop: top}, 900);
     });
 });
+$(()=> {
+    $("input[type=tel]").mask("+7 (999) 999-99-99");
+});
 $(() => {
     $('.reviews').owlCarousel({
         items: 1,
