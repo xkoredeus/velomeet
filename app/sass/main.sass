@@ -89,6 +89,9 @@ select
 	background-color: #F8F8F8
 	border: none
 	+easeinout
+	+r(600)
+		font-size: 14px
+		padding: 10px 20px
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="tel"]::placeholder
@@ -117,6 +120,8 @@ input[type="number"]
 			left: 22px
 			top: 50%
 			transform: translateY(-50%)
+	&__pol
+		max-width: 498px
 	&__checkbox
 		position: relative
 		display: flex
@@ -147,7 +152,7 @@ input[type="number"]
 				+easeinout
 
 		&-text
-			font-size: 14px
+			font-size: 12px
 .tal
 	text-align: left !important
 .und
@@ -167,9 +172,10 @@ input[type="number"]
 	display: inline-block
 	min-width: 192px
 	+easeinout
-	+r(1200)
-		padding: 10px 15px
-		min-width: 170px
+	+r(600)
+		font-size: 12px
+		padding: 10px 20px 11px
+		min-width: 120px
 	&:hover
 		color: $purple
 		background-color: $tr
@@ -179,54 +185,6 @@ input[type="number"]
 		&:hover
 			color: #fff
 			background-color: $purple
-.list
-	&_circle
-		list-style-type: none
-		padding-left: 0
-		li
-			padding-left: 25px
-			position: relative
-			&
-				margin-bottom: 10px
-			&::before
-				content: ''
-				position: absolute
-				width: 8px
-				height: 8px
-				background-color: #EE414F
-				left: 0
-				top: 8px
-				border-radius: 50%
-	&_string
-		list-style-type: none
-		padding-left: 0
-		li
-			padding-left: 25px
-			position: relative
-			&
-				margin-bottom: 10px
-			&::before
-				content: ''
-				position: absolute
-				width: 12px
-				height: 1px
-				background-color: $dark
-				left: 0
-				top: 9px
-	&_num
-		padding-left: 0
-		counter-reset: list1
-		li
-			list-style-type: none
-			&
-				margin-bottom: 10px
-			&::before
-				counter-increment: list1
-				content: counter(list1)
-				color: $purple
-				font-size: 16px
-				font-weight: 600
-				margin-right: 15px
 .section
 	&_inner
 		padding: 60px 0
@@ -240,7 +198,7 @@ input[type="number"]
 		letter-spacing: 1px
 		margin-bottom: 40px
 		+r(1200)
-			font-size: 28px
+			font-size: 20px
 			margin-bottom: 25px
 	&__subtitle
 		font-size: 38px
@@ -260,6 +218,8 @@ input[type="number"]
 		display: flex
 		justify-content: center
 		bottom: -30px
+		+r(600)
+			bottom: -20px
 		button.owl-dot
 			width: 13px
 			height: 13px
@@ -313,29 +273,6 @@ input[type="number"]
 			left: -60px
 		button.owl-next
 			right: -60px
-.preloader
-	display: inline-block
-	position: relative
-	transform: scale(0)
-	svg
-		fill: $purple
-		width: 300px
-		height: 90px
-	&__wrp
-		position: fixed
-		width: 100vw
-		height: 100vh
-		left: 0
-		top: 0
-		right: 0
-		bottom: 0
-		z-index: 4
-		background-color: #fff
-		display: flex
-		justify-content: center
-		align-items: center
-
-		display: none
 .content
 	position: relative
 	overflow: hidden
@@ -356,8 +293,9 @@ input[type="number"]
 			+easeinout
 			span
 				color: $purple
-			&:hover
-				letter-spacing: 9.4px
+			+rmin(1200)
+				&:hover
+					letter-spacing: 9.4px
 		&-sub
 			font-size: 12px
 	&__nav
@@ -367,6 +305,10 @@ input[type="number"]
 			color: $dark
 			border-bottom: 1px solid $tr
 			margin-right: 25px
+			+r(1200)
+				margin-right: 10px
+				&:last-child
+					margin-right: 0
 			&:hover
 				color: $lpurple
 				border-bottom: 1px solid $lpurple
@@ -394,6 +336,10 @@ input[type="number"]
 			max-width: 370px
 			margin-left: auto
 			margin-right: auto
+			.section
+				&__title,
+				&__subtitle
+					text-align: center !important
 	&__cross
 		margin-left: auto
 		display: block
@@ -423,12 +369,18 @@ input[type="number"]
 			opacity: .8
 			visibility: visible
 .banner
-	padding: 60px 0
+	padding: 100px 0
+	+r(1200)
+		padding: 40px 0
 	&__title
 		font-size: 36px
 		font-weight: 700
 		line-height: 1.2
 		margin-bottom: 30px
+		+r(1200)
+			font-size: 20px
+			margin-bottom: 25px
+			text-align: center
 		span
 			color: $purple
 	&__descr
@@ -436,6 +388,9 @@ input[type="number"]
 		font-weight: 400
 		color: $dgr
 		margin-bottom: 20px
+		+r(1200)
+			font-size: 14px
+			text-align: center
 	&__form
 		position: relative
 		box-shadow: 0 0 31.1875px rgba(54, 54, 54, 0.04), 0 2.77222px 27.7222px rgba(0, 0, 0, 0.04)
@@ -451,6 +406,46 @@ input[type="number"]
 			position: absolute
 			right: 0
 			top: 0
+		+r(600)
+			max-width: 320px
+	.form__pol
+		+r(1200)
+			margin-left: auto
+			margin-right: auto
+	&__bmx
+		display: flex
+		justify-content: center
+		+r(1200)
+			svg
+				width: 250px
+				height: 220px
+#right-wheel,
+#left-wheel
+	animation: wheel 2s infinite linear
+	transform-origin: center
+	transform-box: fill-box
+#man
+	animation: man 1s ease-in-out infinite alternate
+	transform-origin: bottom
+#hat
+	animation: hat 1s ease-in-out infinite alternate
+	transform-origin: center
+	transform-box: fill-box
+@keyframes wheel
+	from
+		transform: rotateZ(0)
+	to
+		transform: rotateZ(360deg)
+@keyframes man
+	from
+		transform: rotateX(0)
+	to
+		transform: rotateX(20deg)
+@keyframes hat
+	from
+		transform: translateY(0)
+	to
+		transform: translateY(40%)
 .views
 	&__item
 		text-align: center
@@ -478,14 +473,20 @@ input[type="number"]
 			&-top
 				transform: translateY(5px)
 				+easeinout
+		+r(600)
+			padding: 20px 10px
 		&-ttl
 			font-size: 18px
 			font-weight: 600
 			color: $purple
 			margin-bottom: 15px
+			+r(600)
+				font-size: 16px
 		&-descr
 			color: $dark
 			margin-bottom: 15px
+			+r(600)
+				font-size: 12px
 		&-btn
 			color: $purple
 			border-bottom: 1px solid $purple
@@ -503,6 +504,13 @@ input[type="number"]
 	grid-template-rows: minmax(260px, auto) repeat(2, minmax(130px, auto))
 	grid-gap: 20px
 	padding: 20px
+	+r(1200)
+		grid-gap: 10px
+		padding: 10px
+		grid-template-rows: minmax(140px, auto) repeat(2, minmax(70px, auto))
+	+r(600)
+		grid-template-columns: repeat(4, 1fr)
+		grid-template-rows: repeat(5, minmax(100px, auto))
 	&__item
 		position: relative
 		overflow: hidden
@@ -530,17 +538,24 @@ input[type="number"]
 			grid-column: span 3
 		&:nth-child(4)
 			grid-row: span 2
+			+r(600)
+				grid-row: 1/span 2
 		&:nth-child(5)
 			grid-row: span 2
 		&:nth-child(6)
 			grid-column: span 2
 			grid-row: span 2
+			+r(600)
+				grid-column: span 1
+				grid-row: span 1
 		&:nth-child(7)
 			grid-row: span 2
 		&:nth-child(8)
 			grid-row: span 2
 		&:nth-child(10)
 			grid-column: span 2
+			+r(600)
+				grid-column: span 4
 .promo
 	position: relative
 	color: #fff
@@ -549,6 +564,8 @@ input[type="number"]
 	border-radius: 22px
 	padding: 30px
 	animation: grd 3s ease infinite
+	+r(1200)
+		padding: 20px 15px
 	&::before
 		position: absolute
 		content: ''
@@ -563,10 +580,15 @@ input[type="number"]
 		display: flex
 		flex-direction: column
 		align-items: flex-start
+		+r(1200)
+			text-align: center
+			align-items: center
 	&__title
 		font-size: 22px
 		font-weight: 700
 		margin-bottom: 10px
+		+r(1200)
+			font-size: 20px
 	&__sub
 		font-weight: 500
 		margin-bottom: 10px
@@ -574,6 +596,8 @@ input[type="number"]
 		background-color: #866E9F
 		border-color: #866E9F
 		align-self: flex-end
+		+r(1200)
+			align-self: center
 		&:hover
 			color: #fff
 			background-color: $purple
@@ -594,6 +618,8 @@ input[type="number"]
 		margin-bottom: 30px
 		&:hover
 			box-shadow: 0 13px 17px rgba(182, 183, 185, 0.21)
+		+r(1200)
+			padding: 30px 15px 25px
 	&__img
 		width: 88px
 		height: 88px
@@ -616,11 +642,17 @@ input[type="number"]
 	box-shadow: 0 14px 55px #F2F5FA
 	border-radius: 8px
 	padding: 30px
+	+r(600)
+		padding: 20px 15px
 	&__title
 		font-size: 22px
 		font-weight: 700
 		margin-bottom: 10px
+		+r(1200)
+			font-size: 20px
 	&__left
+		+r(1200)
+			text-align: center
 		&-sub
 			color: $dgr
 			margin-bottom: 6px
@@ -635,6 +667,9 @@ input[type="number"]
 		display: flex
 		flex-direction: column
 		align-items: flex-start
+		+r(600)
+			text-align: center
+			align-items: center
 	&__title
 		font-size: 16px
 		font-weight: 700
@@ -643,6 +678,9 @@ input[type="number"]
 		display: flex
 		flex-direction: column
 		align-items: flex-start
+		+r(600)
+			text-align: center
+			align-items: center
 	&__link
 		&:not(:last-child)
 			margin-bottom: 8px
@@ -669,5 +707,9 @@ input[type="number"]
 		&:hover
 			color: $lpurple
 			letter-spacing: 3px
+		+r(600)
+			font-size: 20px
 	&__copy
 		color: $dark
+		+r(600)
+			font-size: 12px
